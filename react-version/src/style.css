@@ -109,8 +109,9 @@ p {
 --- */
 .main-header {
   background-color: var(--bg-white);
-  padding: 1.5rem 0;
+  padding: 0.25;
   border-bottom: 1px solid var(--border-color);
+  width: 100%;
 }
 
 .main-header .container {
@@ -132,10 +133,11 @@ p {
 }
 
 .nav-btn {
-  padding: 0.5rem 1rem;
+  padding: 0.25rem 1rem;
   border-radius: 6px;
   font-weight: 600;
   transition: all 0.3s ease;
+  display: inline-block;
 }
 .nav-btn-login {
   background-color: transparent;
@@ -155,9 +157,10 @@ p {
 .main-footer {
   background-color: var(--text-dark);
   color: var(--text-light);
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   margin-top: 4rem;
   text-align: center;
+  width: 100%;
 }
 
 /* --- 
@@ -190,24 +193,19 @@ p {
   gap: 1rem;
 }
 
-/* Wavy Background (CSS clip-path) */
+/* Wavy Background  */
 .hero-wave {
   position: absolute;
-  bottom: -1px; /* Prevents tiny gap */
+  bottom: -1px; /* Adjust if needed */
   left: 0;
   width: 100%;
-  height: 100px;
-  background-color: var(--bg-light); /* Matches main page background */
-  clip-path: polygon(
-    0% 100%,
-    100% 100%,
-    100% 25%,
-    75% 58%,
-    50% 32%,
-    25% 65%,
-    0% 42%
-  );
+  height: 150px; /* Adjust height based on your SVG */
+  background-image: url("../public/wave-haikei\ \(3\).svg"); /* Path relative to public folder */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
   z-index: 1;
+  /* Remove clip-path and background-color */
 }
 
 /* --- 
@@ -254,8 +252,8 @@ p {
   background: rgba(255, 255, 255, 0.1);
 }
 .circle-2 {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   bottom: -100px;
   right: -100px;
   background: var(--bg-white);
@@ -423,27 +421,45 @@ p {
   color: var(--danger-color);
 }
 
-/* --- 
-  Responsive Styles (Mobile & Tablet) 
---- */
+/* --- Mobile Navigation Styles --- */
+
+/* Hamburger Button - Hidden on Desktop */
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1100; /* Above overlay */
+}
+
+/* Hamburger Lines */
+.mobile-nav-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-dark);
+  margin: 5px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Nav Links Container - Default Desktop Behavior */
+.nav-links-container {
+  display: flex;
+}
+
+/* --- Responsive Styles (Mobile & Tablet) --- */
 @media (max-width: 768px) {
+  /* --- General Mobile Adjustments --- */
   h1 {
     font-size: 2.5rem;
   }
-
-  .nav-links {
-    /* This is where you would add a mobile menu button */
-    display: none;
-  }
-
   .features-grid {
     grid-template-columns: 1fr;
   }
-
   .dashboard-stats {
     grid-template-columns: 1fr;
   }
-
   .ticket-card {
     flex-direction: column;
     align-items: flex-start;
@@ -453,16 +469,65 @@ p {
     width: 100%;
     justify-content: space-between;
   }
-
   .hero-wave {
-    /* Simpler wave on mobile */
     clip-path: polygon(0% 100%, 100% 100%, 100% 60%, 50% 80%, 0% 60%);
   }
-
   .page-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  /* --- Mobile Navigation Overrides --- */
+  /* Show hamburger */
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  /* Mobile menu overlay container */
+  .nav-links-container {
+    position: fixed;
+    top: 0;
+    left: -100%; /* Start hidden */
+    width: 80%;
+    height: 100%;
+    background-color: var(--bg-white);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: left 0.3s ease-in-out; /* Slide animation */
+    padding-top: 5rem;
+    display: block; /* Override desktop flex */
+  }
+
+  /* Slide menu in when open */
+  .nav-links-container.mobile-menu-open {
+    left: 0;
+  }
+
+  /* Mobile menu list styling */
+  .nav-links-container .nav-links {
+    display: flex; /* Ensure links are visible */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  /* Mobile menu button styling */
+  .nav-links-container .nav-btn {
+    width: 80%;
+    text-align: center;
+  }
+
+  /* Hamburger -> 'X' animation */
+  .mobile-nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  .mobile-nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
   }
 }
 
@@ -510,4 +575,20 @@ p {
   border-radius: 8px;
   font-size: 1rem;
   background-color: white; /* Ensure white background */
+}
+
+/* Style the toggle button to look like a link */
+.link-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  font: inherit; /* Use the same font as surrounding text */
+  padding: 0;
+  margin-left: 0.5rem; /* Add some space */
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: #4338ca; /* Darker primary color on hover */
 }

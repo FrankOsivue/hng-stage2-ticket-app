@@ -71,15 +71,6 @@ Basic accessibility practices were followed:
 
 ---
 
-## Test User Credentials
-
-Use the following credentials to log in:
-
-- **Email:** `user@example.com`
-- **Password:** `password123`
-
----
-
 ## Live Deployment
 
-**[Link to Deployed React App - https://solpoint-react.vercel.app]**
+**[Link to Deployed React App - https://hng-stage2-ticket-app.vercel.app]**
