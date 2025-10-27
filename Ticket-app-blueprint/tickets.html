@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tickets - SOLPOINT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <a href="index.html" class="logo">SOLPOINT</a>
+            <ul class="nav-links">
+                <li><a href="tickets.html" class="nav-btn nav-btn-login">My Tickets</a></li>
+                <li><a href="index.html" class="nav-btn nav-btn-start">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="section-title">Manage Tickets</h2>
+                    <button class="btn btn-primary">Create New Ticket</button>
+                </div>
+
+                <div class="ticket-list">
+                    <div class="ticket-card">
+                        <div class="ticket-info">
+                            <h3>NELFUND School Fees Delay</h3>
+                            <p>Ticket #2001</p>
+                        </div>
+                        <div class="ticket-actions">
+                            <span class="ticket-status status-open">open</span>
+                            <button class="btn-icon">Edit</button>
+                            <button class="btn-icon btn-icon-danger">Delete</button>
+                        </div>
+                    </div>
+                    <div class="ticket-card">
+                        <div class="ticket-info">
+                            <h3>Student Mail Application Not Received</h3>
+                            <p>Ticket #2002</p>
+                        </div>
+                        <div class="ticket-actions">
+                            <span class="ticket-status status-in_progress">in_progress</span>
+                            <button class="btn-icon">Edit</button>
+                            <button class="btn-icon btn-icon-danger">Delete</button>
+                        </div>
+                    </div>
+                    <div class="ticket-card">
+                        <div class="ticket-info">
+                            <h3>Result Verification Pending</h3>
+                            <p>Ticket #2004</p>
+                        </div>
+                        <div class="ticket-actions">
+                            <span class="ticket-status status-closed">closed</span>
+                            <button class="btn-icon">Edit</button>
+                            <button class="btn-icon btn-icon-danger">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 SOLPOINT. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
