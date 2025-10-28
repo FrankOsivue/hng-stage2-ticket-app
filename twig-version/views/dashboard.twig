@@ -1,0 +1,50 @@
+{# views/dashboard.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageTitle|default('Dashboard - SOLPOINT') }}</title>
+    <link rel="stylesheet" href="/style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include '_header.twig' %} 
+
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <h2 class="section-title">Dashboard</h2>
+                
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Total Tickets</h3>
+                        {# Placeholder data - will be dynamic later #}
+                        <div class="count">12</div> 
+                    </div>
+                    <div class="stat-card">
+                        <h3>Open Tickets</h3>
+                        <div class="count">3</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Resolved Tickets</h3>
+                        <div class="count">9</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-nav">
+                    <h2 class="section-title">Manage</h2>
+                    <a href="/tickets" class="btn btn-primary">Go to Ticket Management</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include '_footer.twig' %} 
+
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

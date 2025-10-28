@@ -1,0 +1,64 @@
+{# views/landing.twig - Landing Page Template #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Use the pageTitle variable passed from server.js #}
+    <title>{{ pageTitle|default('SOLPOINT') }}</title> 
+    {# Link to CSS file served from the public folder #}
+    <link rel="stylesheet" href="/style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    {# Include the header template #}
+    {% include '_header.twig' %} 
+
+    <main>
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>University Support, Simplified.</h1> 
+                <p class="subtitle">Your dedicated platform for resolving student issues quickly and efficiently.</p> 
+                <div class="hero-buttons">
+                    <a href="/login" class="btn btn-primary">Submit a Ticket</a>
+                    <a href="/login" class="btn btn-secondary">Student Login</a>
+                </div>
+            </div>
+             {# We'll use the CSS background SVG for the wave defined in style.css #}
+            <div class="hero-wave"></div>
+            <div class="decorative-circle circle-1"></div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">How SOLPOINT Helps You</h2> 
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h3>Log Your Requests Easily</h3> 
+                        <p>Need help with NELFUND fees, portal access, or result verification? Submit your ticket here.</p> 
+                    </div>
+                    <div class="feature-box">
+                        <h3>Track Resolution Progress</h3> 
+                        <p>Monitor the status of your submitted tickets in real-time via your personal dashboard.</p> 
+                    </div>
+                    <div class="feature-box">
+                        <h3>Centralized Support</h3> 
+                        <p>Access support for various university services through one convenient platform.</p> 
+                    </div>
+                </div>
+            </div>
+            <div class="decorative-circle circle-2"></div>
+        </section>
+    </main>
+
+    {# Include the footer template #}
+    {% include '_footer.twig' %} 
+
+    <script src="/js/main.js"></script> 
+
+
+</body>
+</html>

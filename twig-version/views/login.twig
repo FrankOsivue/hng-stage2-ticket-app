@@ -1,0 +1,67 @@
+{# views/login.twig - Login/Signup Page Template #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {# Use pageTitle variable passed from server, with a fallback #}
+    <title>{{ pageTitle|default('Login - SOLPOINT') }}</title>
+    {# Link to CSS file in public folder #}
+    <link rel="stylesheet" href="/style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    {# Include the shared header #}
+    {% include '_header.twig' %} 
+
+    <main>
+        <section class="auth-container">
+            <div class="container">
+                {# Form now submits data via POST to the /login route #}
+                <form class="auth-form" method="POST" action="/login"> 
+                    <h2>Student Portal Login</h2> 
+                    
+                    {# Check if an 'error' variable was passed from the server #}
+                    {% if error %}
+                        {# Display the error message if it exists #}
+                        <p class="form-error" style="display: block; background-color: #FEE2E2; color: #DC2626; padding: 0.75rem; border-radius: 8px; margin-bottom: 1rem;">
+                            {{ error }} 
+                        </p>
+                    {% endif %}
+
+                    {# Email Input - 'name' attribute is used by server to identify data #}
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required> 
+                        <span class="form-error">Please enter a valid email.</span>
+                    </div>
+                    
+                    {# Password Input - 'name' attribute is used by server #}
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required> 
+                        <span class="form-error">Password is required.</span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full-width">Login</button>
+                    
+                    <p class="auth-switch">
+                        Don't have an account? 
+                        <a href="#">Sign Up</a> {# TODO: Implement signup route and template later #}
+                    </p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    {# Include the shared footer #}
+    {% include '_footer.twig' %} 
+
+    <script src="/js/main.js"></script>
+
+
+</body>
+</html>

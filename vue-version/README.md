@@ -81,7 +81,7 @@ Create an account via the Sign Up form, or use previously created credentials st
 
 ## Live Deployment
 
-**[Link to Deployed Vue App - https://solpoint-vue.vercel.app]**
+**[Link to Deployed Vue App - https://hng-stage2-ticket-app-ksey.vercel.app/]**
 
 ## Project Setup
 

@@ -1,0 +1,65 @@
+{# views/tickets.twig #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ pageTitle|default('Manage Tickets - SOLPOINT') }}</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include '_header.twig' %}
+
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="section-title">Manage Tickets</h2>
+                    <a href="/tickets/new" class="btn btn-primary">Create New Ticket</a>
+                </div>
+
+                {# Display potential file errors #}
+                {% if error %}
+                    <p style="color: red; font-weight: bold;">{{ error }}</p>
+                {% endif %}
+                {# TODO: Display redirect errors based on query params if needed #}
+
+                <div class="ticket-list">
+                    {% if tickets and tickets|length > 0 %}
+                        {% for ticket in tickets %}
+                            <div class="ticket-card">
+                                <div class="ticket-info">
+                                    <h3>{{ ticket.title }}</h3>
+                                    <p>Ticket #{{ ticket.id }}</p>
+                                </div>
+                                <div class="ticket-actions">
+                                    <span class="ticket-status status-{{ ticket.status|replace({'_': '-'}) }}">
+                                        {{ ticket.status|replace({'_': ' '}) }}
+                                    </span>
+                                    {# Link to Edit Form #}
+                                    <a href="/tickets/edit/{{ ticket.id }}" class="btn-icon">Edit</a>
+                                    {# Delete Form/Button #}
+                                    <form method="POST" action="/tickets/delete/{{ ticket.id }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete ticket #{{ ticket.id }}?');">
+                                        <button type="submit" class="btn-icon btn-icon-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% else %}
+                            <p>No tickets found.</p>
+                        {% endfor %}
+                    {% else %}
+                       <p>No tickets found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {% include '_footer.twig' %}
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

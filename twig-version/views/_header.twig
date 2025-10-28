@@ -1,0 +1,29 @@
+{# views/_header.twig - Reusable Header #}
+<header class="main-header">
+    <nav class="container">
+        <a href="/" class="logo">SOLPOINT</a>
+
+        {# Hamburger Button for Mobile #}
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        {# Wrapper Div for Links (controlled by JS) #}
+        <div class="nav-links-container"> 
+            <ul class="nav-links">
+                {# Check session data passed from server #}
+                {% if session.isLoggedIn %}
+                    {# Logged IN Links #}
+                    <li><a href="/tickets" class="nav-btn nav-btn-login">My Tickets</a></li>
+                    <li><a href="/logout" class="nav-btn nav-btn-start">Logout</a></li>
+                {% else %}
+                    {# Logged OUT Links #}
+                    <li><a href="/login" class="nav-btn nav-btn-login">Login</a></li>
+                    <li><a href="/login" class="nav-btn nav-btn-start">Get Started</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
