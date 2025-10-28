@@ -88,6 +88,4 @@ Use the following hardcoded credentials to log in:
 
 ## Live Deployment
 
-_(You will add your Render/Railway link here once deployed)_
-
-**[Link to Deployed Twig App - ]**
+**[Link to Deployed Twig App - https://solpoint-twig-version.onrender.com/ ]**
